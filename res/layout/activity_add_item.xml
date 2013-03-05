@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <Spinner
+        android:id="@+id/item_drop_down"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/item_descriptions"
+        android:prompt="@string/item_prompt"/>
+   	
+    <EditText
+        android:id="@+id/item_description_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Item Description"
+        android:background="@drawable/textborder"/>	
+        
+    <EditText
+        android:id="@+id/item_name_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Item Name"
+        android:background="@drawable/textborder"/>
+    
+    <Button
+        android:id="@+id/cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:background="@drawable/roundbutton"/>
+    
+    <Button
+        android:id="@+id/confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:background="@drawable/roundbutton"/>
+
+
+</LinearLayout>

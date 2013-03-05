@@ -1,6 +1,6 @@
 package com.example.lostandfound;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -19,6 +19,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lostandfound.util.Account;
+import com.example.lostandfound.util.Item;
+import com.example.lostandfound.util.ItemDatabaseUtility;
+import com.example.lostandfound.util.UserDatabaseUtility;
+
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
@@ -30,8 +35,8 @@ public class LoginActivity extends Activity {
 	 * A dummy authentication store containing known user names and passwords.
 	 * TODO: remove after connecting to a real authentication system.
 	 */
-	private static String[] DUMMY_CREDENTIALS = new String[] {
-			"foo@example.com:hello", "bar@example.com:world" };
+	//private static String[] DUMMY_CREDENTIALS = new String[] {
+		//	"foo@example.com:hello", "bar@example.com:world" };
 
 	/**
 	 * The default email to populate the email field with.
@@ -56,15 +61,20 @@ public class LoginActivity extends Activity {
 	
 	private Activity thisActivity;
 
+	public static ArrayList<Account> accounts;
+	public static ArrayList<Item> items;
+	public static Account curAcc;
+	protected static boolean firstTime = true;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		overridePendingTransition(R.anim.fadein, R.anim.fadeout);
+		//TODO change the code below to use accounts arraylist instead of Dummy_credentials
 		setContentView(R.layout.activity_login);
-		Intent intent = getIntent();
-		String message = intent.getStringExtra(RegistrationActivity.EXTRA_MESSAGE);
+		
 		//----------
-		Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+/*		Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
 		toast.show();
 		if(message!=null){
 			String[] newCreds = new String[DUMMY_CREDENTIALS.length+1];
@@ -77,7 +87,19 @@ public class LoginActivity extends Activity {
 		}
 		//
 		toast = Toast.makeText(this, Arrays.toString(DUMMY_CREDENTIALS), Toast.LENGTH_LONG);
-		toast.show();
+		toast.show();*/
+		if(firstTime){
+			UserDatabaseUtility udu= new UserDatabaseUtility();
+			accounts = udu.readFromUserDB();
+			ItemDatabaseUtility idu= new ItemDatabaseUtility();
+			items = idu.readFromUserDB();
+			firstTime=false;
+		}
+		
+		
+		
+		
+		
 		thisActivity = this;
 		// Set up the login form.
 		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
@@ -232,11 +254,12 @@ public class LoginActivity extends Activity {
 				return false;
 			}
 
-			for (String credential : DUMMY_CREDENTIALS) {
-				String[] pieces = credential.split(":");
-				if (pieces[0].equals(mEmail)) {
+			for (Account credential : accounts) {
+				if (credential.getUsername().equals(mEmail)) {
 					// Account exists, return true if the password matches.
-					return pieces[1].equals(mPassword);
+					//Toast t = Toast.makeText(thisActivity, credential.getPassword()+":"+mPassword, Toast.LENGTH_LONG);
+					//t.show();
+					return credential.getPassword().equals(mPassword)&&!credential.isLocked;
 				}
 			}
  
@@ -255,6 +278,11 @@ public class LoginActivity extends Activity {
 			showProgress(false);
 
 			if (success) {
+				for (Account credential : accounts) {
+					if (credential.getUsername().equals(mEmail)) {
+						curAcc = credential; 
+					}
+				}
 				Intent intent = new Intent(thisActivity, HomeActivity.class);
 				//EditText editText = (EditText) findViewById(R.id.edit_message);
 				//String message = editText.getText().toString();
@@ -264,6 +292,15 @@ public class LoginActivity extends Activity {
 				mPasswordView
 						.setError(getString(R.string.error_incorrect_password));
 				mPasswordView.requestFocus();
+				for (Account credential : accounts) {
+					if (credential.getUsername().equals(mEmail)) {
+						credential.addTry();
+						if(credential.isLocked){
+							Toast t = Toast.makeText(thisActivity, "Your Account Is Locked", Toast.LENGTH_LONG);
+							t.show();
+						}
+					}
+				}
 			}
 		}
 

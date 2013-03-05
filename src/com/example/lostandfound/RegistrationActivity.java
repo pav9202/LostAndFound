@@ -1,7 +1,5 @@
 package com.example.lostandfound;
 
-import java.util.Arrays;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.lostandfound.util.User;
 
 public class RegistrationActivity extends Activity {
     public final static String EXTRA_MESSAGE = "com.example.lostandfound.RegistrationActivity.NEWACCOUNT";
@@ -35,8 +35,14 @@ public class RegistrationActivity extends Activity {
 		OnClickListener list = new OnClickListener(){
 			public void onClick(View v){
 				// TODO saving to the database here
-				Intent in = new Intent(thisActivity,LoginActivity.class);
-				in.putExtra(EXTRA_MESSAGE, message);
+				Intent in = new Intent(thisActivity,AddItemActivity.class);
+				User newUser = new User();
+				String[] s = message.split(":");
+				newUser.setUsername(s[0]);
+				newUser.setPassword(s[1]);
+				newUser.setType("User");
+				LoginActivity.accounts.add(newUser);
+				LoginActivity.curAcc = newUser;
 				startActivity(in);
 			}
 		};
