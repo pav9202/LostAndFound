@@ -32,16 +32,21 @@ public class UserDatabaseUtility {
 	 * @param String output String that needs to be put into file
 	 * @param String path Path that the text file is located in
 	 * @return boolean True if file was written, False if not
+	 * @throws IOException 
 	 * */
-	public boolean writeToUserDB(){
+	public boolean writeToUserDB() throws IOException{
 		  
 		  OutputStreamWriter out = null;
-		  String fullPath = Environment.getExternalStorageDirectory() + "/" + "userData.txt"; //Create file path
+		  String fullPath = Environment.getExternalStorageDirectory().getPath();//Create file path
 		  /* Gets the Android external storage directory. 
 		   * This directory may not currently be accessible if it has been mounted 
 		   * by the user on their computer, has been removed from the device, or 
 		   * some other problem has happened. */
-		  File file = new File(fullPath); //Create a new file with that path
+		  File file = new File(fullPath + "/" + "userData.txt"); //Create a new file with that path
+		  if (!file.exists()){
+			  file.createNewFile();
+			  return true;
+		  }
 		  ArrayList<Account> a = LoginActivity.accounts;
 		  for(Account acc:a){
 			  try{
@@ -72,14 +77,16 @@ public class UserDatabaseUtility {
  * 
  * @param String fileName Name of the file that needs to be read
  * @return String String representation of the text file
+ * @throws IOException 
  * */
-	public ArrayList<Account> readFromUserDB(){ 
-		  String fullPath = Environment.getExternalStorageDirectory() + "/" + "userData.txt"; //Find file within path
-		  File file = new File(fullPath); 
+	public ArrayList<Account> readFromUserDB() throws IOException{ 
+		  String fullPath = Environment.getExternalStorageDirectory().getPath();// + "/" + "userData.txt"; //Find file within path
+		  File file = new File(fullPath + "/" + "userData.txt"); 
 		  
 		  if(!file.exists()){ //Create file if it doesn't exist
-			  String completePath = Environment.getExternalStorageDirectory() + "/" + "userData.txt"; //Create file path
-			  File newfile = new File(completePath);
+			  //String completePath = Environment.getExternalStorageDirectory() + "/" + "userData.txt"; //Create file path
+			  File newFile = new File(fullPath + "/" + "userData.txt");
+			  newFile.createNewFile();
 			  return new ArrayList<Account>();
 		  }
 		  

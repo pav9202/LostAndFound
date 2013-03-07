@@ -30,16 +30,22 @@ public class ItemDatabaseUtility {
 	 * @param String output String that needs to be put into file
 	 * @param String path Path that the text file is located in
 	 * @return boolean True if file was written, False if not
+	 * @throws IOException 
 	 * */
-	public boolean writeToUserDB(){
+	public boolean writeToUserDB() throws IOException{
 		  
 		  OutputStreamWriter out = null;
-		  String fullPath = Environment.getExternalStorageDirectory() + "/" + "itemData.txt"; //Create file path
+		  String fullPath = Environment.getExternalStorageDirectory().getPath();//Create file path
 		  /* Gets the Android external storage directory. 
 		   * This directory may not currently be accessible if it has been mounted 
 		   * by the user on their computer, has been removed from the device, or 
 		   * some other problem has happened. */
-		  File file = new File(fullPath); //Create a new file with that path
+		  File file = new File(fullPath + "/" + "itemData.txt"); //Create a new file with that path
+		  if (!file.exists()){
+			  file.createNewFile();
+			  return true;
+		  }
+		  file.createNewFile();
 		  ArrayList<Item> a = LoginActivity.items;
 		  for(Item acc:a){
 			  try{
@@ -70,14 +76,17 @@ public class ItemDatabaseUtility {
  * 
  * @param String fileName Name of the file that needs to be read
  * @return String String representation of the text file
+ * @throws IOException 
  * */
-	public ArrayList<Item> readFromUserDB(){ 
-		  String fullPath = Environment.getExternalStorageDirectory() + "/" + "itemData.txt"; //Find file within path
+	public ArrayList<Item> readFromUserDB() throws IOException{ 
+		  String fullPath = Environment.getExternalStorageDirectory().getPath() + "/" + "itemData.txt"; //Find file within path
 		  File file = new File(fullPath); 
+		  file.createNewFile();
 		  
 		  if(!file.exists()){
-			  String completePath = Environment.getExternalStorageDirectory() + "/" + "itemData.txt"; //Create file path
+			  String completePath = Environment.getExternalStorageDirectory().getPath() + "/" + "itemData.txt"; //Create file path
 			  File newfile = new File(completePath);
+			  newfile.createNewFile();
 			  return new ArrayList<Item>();
 		  }
 		  

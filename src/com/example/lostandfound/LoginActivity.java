@@ -1,5 +1,6 @@
 package com.example.lostandfound;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import android.animation.Animator;
@@ -90,9 +91,19 @@ public class LoginActivity extends Activity {
 		toast.show();*/
 		if(firstTime){
 			UserDatabaseUtility udu= new UserDatabaseUtility();
-			accounts = udu.readFromUserDB();
+			try {
+				accounts = udu.readFromUserDB();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			ItemDatabaseUtility idu= new ItemDatabaseUtility();
-			items = idu.readFromUserDB();
+			try {
+				items = idu.readFromUserDB();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			firstTime=false;
 		}
 		
