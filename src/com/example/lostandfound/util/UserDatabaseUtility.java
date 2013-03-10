@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Scanner;
 
 import com.example.lostandfound.LoginActivity;
 
@@ -34,7 +35,7 @@ public class UserDatabaseUtility {
 	 * @return boolean True if file was written, False if not
 	 * @throws IOException 
 	 * */
-	public boolean writeToUserDB() throws IOException{
+	public boolean writeToUserDBOther() throws IOException{
 		  
 		  OutputStreamWriter out = null;
 		  String fullPath = Environment.getExternalStorageDirectory().getPath();//Create file path
@@ -43,17 +44,23 @@ public class UserDatabaseUtility {
 		   * by the user on their computer, has been removed from the device, or 
 		   * some other problem has happened. */
 		  File file = new File(fullPath + "/" + "userData.txt"); //Create a new file with that path
-		  if (!file.exists()){
+		  
+		  if (!file.exists())
+		  {
 			  file.createNewFile();
 			  return true;
 		  }
+		  
 		  ArrayList<Account> a = LoginActivity.accounts;
-		  for(Account acc:a){
-			  try{
+		  for(Account acc:a)
+		  {
+			  try
+			  {
 				  out = new OutputStreamWriter(new FileOutputStream(file));
 				  out.write(acc.getUsername()+","+acc.getPassword()+","+acc.ID+","+acc.getAccountType()+"\n"); 
 				  
-			  }catch(Exception e){
+			  }
+			  catch(Exception e){
 				  e.printStackTrace(); 
 				  return false;
 			  }
@@ -79,15 +86,16 @@ public class UserDatabaseUtility {
  * @return String String representation of the text file
  * @throws IOException 
  * */
-	public ArrayList<Account> readFromUserDB() throws IOException{ 
+	public ArrayList<Account> readFromUserDBOther() throws IOException{ 
 		  String fullPath = Environment.getExternalStorageDirectory().getPath();// + "/" + "userData.txt"; //Find file within path
 		  File file = new File(fullPath + "/" + "userData.txt"); 
 		  
-		  if(!file.exists()){ //Create file if it doesn't exist
-			  //String completePath = Environment.getExternalStorageDirectory() + "/" + "userData.txt"; //Create file path
-			  File newFile = new File(fullPath + "/" + "userData.txt");
-			  newFile.createNewFile();
-			  return new ArrayList<Account>();
+		  if(!file.exists())
+		  {		//Create file if it doesn't exist
+			  	//String completePath = Environment.getExternalStorageDirectory() + "/" + "userData.txt"; //Create file path
+			  	File newFile = new File(fullPath + "/" + "userData.txt");
+			  	newFile.createNewFile();
+			  	return new ArrayList<Account>();
 		  }
 		  
 		  BufferedReader reader = null;
@@ -105,7 +113,8 @@ public class UserDatabaseUtility {
 		  ArrayList<Account> accounts = new ArrayList<Account>();
 		  String string = builder.toString();
 		  String[] s = string.split("\n");
-		  for(String e:s){
+		  for(String e:s)
+		  {
 			  String[] t = e.split(",");
 			  Account newAcc = null;
 			  if(t[3].equals("Admin")){
@@ -128,4 +137,57 @@ public class UserDatabaseUtility {
 		  
 		  String[] token = s.split("\n");*/
 		 }
+
+/*
+ * 
+ * 
+ * 
+ */
+	public ArrayList<Account> readFromUserDB() throws IOException
+	{ 
+		String fullPath = Environment.getExternalStorageDirectory().getPath();// + "/" + "userData.txt"; //Find file within path
+		File file = new File(fullPath + "/" + "userData.txt"); 
+	  
+		if(!file.exists())
+		{		
+			//Create file if it doesn't exist
+			//String completePath = Environment.getExternalStorageDirectory() + "/" + "userData.txt"; //Create file path
+		  	File newFile = new File(fullPath + "/" + "userData.txt");
+		  	newFile.createNewFile();
+		  	return new ArrayList<Account>();
 		}
+		Scanner scan = new Scanner(file);
+
+		ArrayList<Account> accounts = new ArrayList<Account>();		
+		ArrayList<String> strings = new ArrayList<String>();
+		
+		while(scan.hasNextLine())
+			strings.add(scan.nextLine());
+		
+		for(String e:strings)
+		{
+			String[] t = e.split(",");
+			Account newAcc = null;
+			
+			if(t[3].equals("Admin"))
+			{
+				newAcc = new Admin(t[2]);
+				newAcc.setUsername(t[0]);
+				newAcc.setPassword(t[1]);
+				newAcc.setType(t[3]);
+			}
+			
+			if(t[3].equals("User"))
+			{
+				newAcc = new User(t[2]);
+				newAcc.setUsername(t[0]);
+				newAcc.setPassword(t[1]);
+				newAcc.setType(t[3]);
+			}
+			accounts.add(newAcc);
+		}
+		
+		return accounts;
+	  
+	 	}
+	}

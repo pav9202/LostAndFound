@@ -41,28 +41,39 @@ public class ItemDatabaseUtility {
 		   * by the user on their computer, has been removed from the device, or 
 		   * some other problem has happened. */
 		  File file = new File(fullPath + "/" + "itemData.txt"); //Create a new file with that path
-		  if (!file.exists()){
+		  
+		  if (!file.exists())
+		  {
 			  file.createNewFile();
 			  return true;
 		  }
-		  file.createNewFile();
+
+		  //What is this here?
+		  //file.createNewFile();
 		  ArrayList<Item> a = LoginActivity.items;
-		  for(Item acc:a){
-			  try{
+		  for(Item acc:a)
+		  {
+			  try
+			  {
 				  out = new OutputStreamWriter(new FileOutputStream(file));
-				  out.write(acc.getName()+","+acc.getDescripion()+","+acc.getUserID()+","+acc.getCategory()+"\n"); 
-				  
-			  }catch(Exception e){
+				  out.write(acc.getName()+","+acc.getDescripion()+","+acc.getUserID()+","+acc.getCategory()+"\n");   
+			  }
+			  catch(Exception e)
+			  {
 				  e.printStackTrace(); 
 				  return false;
 			  }
-		  	}
-		  try {
+		  }
+		  	
+		  try 
+		  {
 			out.flush();
-		} catch (IOException e1) {
+		  } 
+		  catch (IOException e1) 
+		  {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} //forced write to sd card
+		  } //forced write to sd card
 		  try {
 			out.close();
 		} catch (IOException e) {
@@ -78,7 +89,8 @@ public class ItemDatabaseUtility {
  * @return String String representation of the text file
  * @throws IOException 
  * */
-	public ArrayList<Item> readFromUserDB() throws IOException{ 
+	public ArrayList<Item> readFromUserDB() throws IOException
+	{ 
 		  String fullPath = Environment.getExternalStorageDirectory().getPath() + "/" + "itemData.txt"; //Find file within path
 		  File file = new File(fullPath); 
 		  file.createNewFile();
