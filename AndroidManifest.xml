@@ -7,8 +7,10 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>"
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+"
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -18,11 +20,7 @@
             android:name="com.example.lostandfound.LoginActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize|stateVisible" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.example.lostandfound.RegisterActivity"
@@ -41,6 +39,19 @@
         <activity
             android:name="com.example.lostandfound.AddItemActivity"
             android:label="@string/title_activity_add_item" >
+        </activity>
+        <activity
+            android:name="com.example.lostandfound.AdminPanelActivity"
+            android:label="@string/title_activity_admin_panel" >
+        </activity>
+        <activity
+            android:name="com.example.lostandfound.MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

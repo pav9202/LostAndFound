@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lostandfound.util.Account;
+import com.example.lostandfound.util.Admin;
 import com.example.lostandfound.util.Item;
 import com.example.lostandfound.util.ItemDatabaseUtility;
 import com.example.lostandfound.util.UserDatabaseUtility;
@@ -65,7 +66,7 @@ public class LoginActivity extends Activity {
 	public static ArrayList<Account> accounts;
 	public static ArrayList<Item> items;
 	public static Account curAcc;
-	protected static boolean firstTime = true;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +90,8 @@ public class LoginActivity extends Activity {
 		//
 		toast = Toast.makeText(this, Arrays.toString(DUMMY_CREDENTIALS), Toast.LENGTH_LONG);
 		toast.show();*/
-		if(firstTime){
-			UserDatabaseUtility udu= new UserDatabaseUtility();
+		if(MainActivity.firstTime){
+		/*	UserDatabaseUtility udu= new UserDatabaseUtility();
 			try {
 				accounts = udu.readFromUserDB();
 			} catch (IOException e) {
@@ -103,8 +104,15 @@ public class LoginActivity extends Activity {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			firstTime=false;
+			}*/
+			MainActivity.firstTime=false;
+			accounts = new ArrayList<Account>();
+			Admin defaultAdmin = new Admin();
+			defaultAdmin.setUsername("admin@admin.com");
+			defaultAdmin.setPassword("admin");
+			accounts.add(defaultAdmin);
+			items = new ArrayList<Item>();
+			
 		}
 		
 		
@@ -294,11 +302,19 @@ public class LoginActivity extends Activity {
 						curAcc = credential; 
 					}
 				}
-				Intent intent = new Intent(thisActivity, HomeActivity.class);
-				//EditText editText = (EditText) findViewById(R.id.edit_message);
-				//String message = editText.getText().toString();
-				//intent.putExtra(EXTRA_MESSAGE, mEmail+":"+mPassword);
-				startActivity(intent);
+				if(curAcc.getAccountType().equals("User")&&!curAcc.isLocked){
+					Intent intent = new Intent(thisActivity, HomeActivity.class);
+					//EditText editText = (EditText) findViewById(R.id.edit_message);
+					//String message = editText.getText().toString();
+					//intent.putExtra(EXTRA_MESSAGE, mEmail+":"+mPassword);
+					startActivity(intent);
+				}else if(curAcc.getAccountType().equals("Admin")){
+					Intent intent = new Intent(thisActivity, AdminPanelActivity.class);
+					//EditText editText = (EditText) findViewById(R.id.edit_message);
+					//String message = editText.getText().toString();
+					//intent.putExtra(EXTRA_MESSAGE, mEmail+":"+mPassword);
+					startActivity(intent);
+				}
 			} else {
 				mPasswordView
 						.setError(getString(R.string.error_incorrect_password));

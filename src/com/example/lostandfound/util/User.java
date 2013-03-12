@@ -53,6 +53,9 @@ public class User extends Account {
 	public void lock(){
 		this.isLocked = true;
 	}
+	public void unlock(){
+		this.isLocked = false;
+	}
 	@Override
 	public void addTry() {
 		// TODO Auto-generated method stub

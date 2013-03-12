@@ -17,6 +17,7 @@ public abstract class Account {
 	public abstract void setPassword(String a);
 	public abstract void setType(String a);
 	public abstract void lock();
+	public abstract void unlock();
 	public abstract void addTry();
 	
 }

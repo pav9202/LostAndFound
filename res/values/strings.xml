@@ -18,17 +18,26 @@
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_home">Home</string>
     <string name="title_activity_add_item">Home</string>
-    
+    <string name="enter_a_name">Enter a name</string>
+    <string name="create_a_admin">Create new admin</string>
+    <string name="enter_a_password">Enter a password</string>
+    <string name="unlock_a_account">Unlock a account</string>
+    <string name="remove_a_account">Remove a account</string>
+    <string name="go_home">Go to home screen</string>
     <string name="item_prompt">Choose a category that best suits your item.</string>
-    
+
     <string-array name="item_descriptions">
-    	<item>Phone</item>
-    	<item>Keys</item>
-    	<item>Jewellery</item>
-    	<item>Photo Album</item>
-    	<item>Clothing</item>
-    	<item>Handheld Console</item>
-    	<item>Other</item>
+        <item>Phone</item>
+        <item>Keys</item>
+        <item>Jewellery</item>
+        <item>Photo Album</item>
+        <item>Clothing</item>
+        <item>Handheld Console</item>
+        <item>Other</item>
     </string-array>
-    
+
+    <string name="title_activity_admin_panel">AdminPanelActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+
 </resources>
