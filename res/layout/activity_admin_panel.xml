@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3CB1DC"
+    tools:context=".AdminPanel" >
+
+    <EditText
+        android:id="@+id/admin_name_enter"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="@string/enter_a_name"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/admin_password_create"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/remove_account"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/create_admin"
+            android:layout_weight=".5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:alpha=".4"
+            android:background="@drawable/roundbutton"
+            android:shadowColor="@color/white"
+            android:text="@string/create_a_admin"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/admin_password"
+            android:layout_weight=".5"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="@string/enter_a_password"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/go_home"
+        android:layout_below="@+id/admin_password_create"
+        android:src="@drawable/lostafoundlogo" />
+
+    <Button
+        android:id="@+id/unlock_account"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/admin_name_enter"
+        android:layout_marginTop="14dp"
+        android:alpha=".4"
+        android:background="@drawable/roundbutton"
+        android:shadowColor="@color/white"
+        android:text="@string/unlock_a_account"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/remove_account"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/unlock_account"
+        android:layout_marginTop="14dp"
+        android:alpha=".4"
+        android:background="@drawable/roundbutton"
+        android:shadowColor="@color/white"
+        android:text="@string/remove_a_account"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/go_home"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:alpha=".6"
+        android:background="@drawable/roundbuttongreen"
+        android:shadowColor="@color/black"
+        android:text="@string/go_home"
+        android:textColor="@color/black" />
+
+</RelativeLayout>
