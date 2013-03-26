@@ -48,6 +48,18 @@ public class RegistrationActivity extends Activity {
 		};
 		b.setOnClickListener(list);
 		
+		
+		
+//		Button testingHomeActivity = (Button) findViewById(R.id.home_activity_button);
+//		OnClickListener goHomeActivityClick = new OnClickListener(){
+//			public void onClick(View v) {
+//				Intent in = new Intent(thisActivity,HomeActivity.class);
+//				startActivity(in);
+//			}
+//		};
+//		testingHomeActivity.setOnClickListener(goHomeActivityClick);
+		
+		
 		return true;
 	}
 	

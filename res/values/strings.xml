@@ -25,6 +25,7 @@
     <string name="remove_a_account">Remove a account</string>
     <string name="go_home">Go to home screen</string>
     <string name="item_prompt">Choose a category that best suits your item.</string>
+    <string name="logo_desc">Logo</string>
 
     <string-array name="item_descriptions">
         <item>Phone</item>

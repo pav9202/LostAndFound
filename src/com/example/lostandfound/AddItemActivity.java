@@ -1,6 +1,7 @@
            
 package com.example.lostandfound;
 import java.io.FileOutputStream;
+
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -17,14 +18,19 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.lostandfound.util.Item;
+//import com.example.test.R;
 
 public class AddItemActivity extends Activity {
 
 	private Spinner itemDropDown;
 	private Button confirm;
 	private Button cancel;
+	private Button foundButton;
+	private Button searchButton;
 	private OnClickListener confirmListener;
 	private OnClickListener cancelListener;
+	private OnClickListener foundOptionListener;
+	private OnClickListener searchOptionListener;
 	private EditText descriptionField;
 	private EditText nameField;
 	private String itemCategory;
@@ -49,6 +55,13 @@ public class AddItemActivity extends Activity {
 		initializeListeners();
 		
 		initializeViews();
+		
+		foundButton = (Button) findViewById(R.id.found_option_button);
+		foundButton.setOnClickListener(foundOptionListener);
+		
+		searchButton = (Button) findViewById(R.id.search_option_button);
+		searchButton.setOnClickListener(searchOptionListener); 
+		
 	}
 
 	/**
@@ -91,6 +104,37 @@ public class AddItemActivity extends Activity {
 	 */
 	private void initializeListeners()
 	{
+		
+		
+		
+		searchOptionListener = new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				View optionsLinearLayout = (View) findViewById(R.id.options_linear_layout);
+				View searchLinearLayout = (View) findViewById(R.id.search_item_form);
+				optionsLinearLayout.setVisibility(View.INVISIBLE);
+				searchLinearLayout.setVisibility(View.VISIBLE);
+			}
+		};
+		
+		
+		foundOptionListener = new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				View optionsLinearLayout = (View) findViewById(R.id.options_linear_layout);
+				View foundLinearLayout = (View) findViewById(R.id.found_item_form);
+				optionsLinearLayout.setVisibility(View.INVISIBLE);
+				foundLinearLayout.setVisibility(View.VISIBLE);
+			}
+		};
+		
+
+		
+		
 		confirmListener = new OnClickListener()
 		{
 			@Override

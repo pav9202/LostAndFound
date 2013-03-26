@@ -91,6 +91,9 @@
                     android:paddingRight="10dp"
                     android:rotation="8"
                     android:text="Sign Up" />
+                
+                
+                    
             </LinearLayout>
         </ScrollView>
 
