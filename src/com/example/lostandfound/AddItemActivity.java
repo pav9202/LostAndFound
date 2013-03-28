@@ -1,24 +1,19 @@
            
 package com.example.lostandfound;
-import java.io.FileOutputStream;
-
 import java.util.LinkedList;
-import java.util.Scanner;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.lostandfound.util.Item;
-//import com.example.test.R;
 
 public class AddItemActivity extends Activity {
 
@@ -40,7 +35,10 @@ public class AddItemActivity extends Activity {
 	private LinkedList<String> items;
 	
 	private Activity thisActivity;
-	
+	EditText name;
+	DatePicker date;
+	Spinner category;
+	Spinner status;
 	/**
 	 * Initialization of Listeners and Views
 	 * 
@@ -48,19 +46,49 @@ public class AddItemActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_add_item);
-		
+		setContentView(R.layout.activity_add_item);		
 		thisActivity = this;
 		
-		initializeListeners();
+		name = (EditText)findViewById(R.id.nameOfItem);
+		date = (DatePicker)findViewById(R.id.dateOfItem);
+		category = (Spinner)findViewById(R.id.spinner1);
+		status = (Spinner)findViewById(R.id.spinner1);
+		Button submit = (Button)findViewById(R.id.submitItem);
+		Button cancel = (Button)findViewById(R.id.cancel);
+
+		submit.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Item newone = new Item();
+				newone.setName(name.getText().toString());
+				newone.setDate(date.getMonth()+"/"+date.getDayOfMonth()+"/"+date.getYear());
+				newone.setCategory(String.valueOf(category.getSelectedItem()));
+				newone.setStatus(String.valueOf(status.getSelectedItem()));
+				newone.setUserID(LoginActivity.curAcc.getID());
+				if(newone.getStatus().equals("Lost"))
+					LoginActivity.itemsLost.add(newone);
+				else
+					LoginActivity.itemsFound.add(newone);
+				Intent intent = new Intent(thisActivity, HomeActivity.class);
+				startActivity(intent);
+			}
+			
+		});
+		cancel.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				Intent intent = new Intent(thisActivity, HomeActivity.class);
+				startActivity(intent);
+			}
+			
+		});
 		
-		initializeViews();
 		
-		foundButton = (Button) findViewById(R.id.found_option_button);
-		foundButton.setOnClickListener(foundOptionListener);
-		
-		searchButton = (Button) findViewById(R.id.search_option_button);
-		searchButton.setOnClickListener(searchOptionListener); 
 		
 	}
 
@@ -71,14 +99,12 @@ public class AddItemActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		Intent intent = getIntent();
-		
+		Intent intent = getIntent();		
 		getMenuInflater().inflate(R.menu.activity_home, menu);
 		return true;
 	}
 	
 	public void onBackPressed(){
-		
 	}
 	
 	/**
@@ -87,82 +113,9 @@ public class AddItemActivity extends Activity {
 	 */
 	private void initializeViews()
 	{
-		itemDropDown = (Spinner) findViewById(R.id.item_drop_down);
-		descriptionField = (EditText) findViewById(R.id.item_description_field);
-		nameField = (EditText) findViewById(R.id.item_name_field);
-		cancel = (Button) findViewById(R.id.cancel_button);
-		confirm = (Button) findViewById(R.id.confirm_button);
 		
-		confirm.setOnClickListener(confirmListener);
-		cancel.setOnClickListener(cancelListener);
 	}
 	
-	/**
-	 * initializes the listeners and the actions to be performed upon clicking a button.
-	 * 
-	 * 
-	 */
-	private void initializeListeners()
-	{
-		
-		
-		
-		searchOptionListener = new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				View optionsLinearLayout = (View) findViewById(R.id.options_linear_layout);
-				View searchLinearLayout = (View) findViewById(R.id.search_item_form);
-				optionsLinearLayout.setVisibility(View.INVISIBLE);
-				searchLinearLayout.setVisibility(View.VISIBLE);
-			}
-		};
-		
-		
-		foundOptionListener = new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				View optionsLinearLayout = (View) findViewById(R.id.options_linear_layout);
-				View foundLinearLayout = (View) findViewById(R.id.found_item_form);
-				optionsLinearLayout.setVisibility(View.INVISIBLE);
-				foundLinearLayout.setVisibility(View.VISIBLE);
-			}
-		};
-		
-
-		
-		
-		confirmListener = new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				//saveItem();
-				Item newItem = new Item();
-				newItem.setCategory(String.valueOf(itemDropDown.getSelectedItem()));
-				newItem.setDescription(descriptionField.getText().toString());
-				newItem.setName(nameField.getText().toString());
-				newItem.setUserID(LoginActivity.curAcc.getID());
-				LoginActivity.items.add(newItem);
-				Intent in = new Intent(thisActivity,HomeActivity.class);
-				startActivity(in);
-			}
-		};
-		cancelListener = new OnClickListener()
-		{
-			@Override
-			public void onClick(View v)
-			{
-				//saveItem();
-			
-				Intent in = new Intent(thisActivity,HomeActivity.class);
-				startActivity(in);
-			}
-		};
-	}
 	
 	/**
 	 * Method for saving the item to the current text file.

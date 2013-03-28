@@ -16,9 +16,33 @@
 	    android:id="@+id/outer_linear_layout"
 	    android:textStyle="@style/CodeFont" >
 
-    
-
-        
+        <Button
+            android:id="@+id/adding"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="72dp"
+            android:background="@drawable/roundbutton"
+            android:gravity="center_horizontal"
+            android:text="Add Item"
+            android:textColor="@color/white" />
+        <Button
+            android:id="@+id/filter"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="72dp"
+            android:background="@drawable/roundbutton"
+            android:gravity="center_horizontal"
+            android:text="Filter"
+            android:textColor="@color/white" />
+        <Button
+            android:id="@+id/logout"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="72dp"
+            android:background="@drawable/roundbutton"
+            android:gravity="center_horizontal"
+            android:text="Logout"
+            android:textColor="@color/white" />"
         
     </LinearLayout>
 	

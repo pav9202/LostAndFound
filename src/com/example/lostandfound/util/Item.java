@@ -5,6 +5,8 @@ public class Item {
 	protected String description;
 	protected String userID;
 	protected String category;
+	protected String date;
+	protected String status;
 	public String getName(){
 		return name;
 	}
@@ -19,6 +21,18 @@ public class Item {
 	}
 	public void setCategory(String a){
 		category = a;
+	}
+	public String getStatus(){
+		return status;
+	}
+	public void setStatus(String a){
+		status = a;
+	}
+	public String getDate(){
+		return date;
+	}
+	public void setDate(String a){
+		date = a;
 	}
 
 	public void setDescription(String a){

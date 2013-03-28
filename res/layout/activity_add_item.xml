@@ -4,115 +4,93 @@
     android:layout_height="match_parent"
     android:background="#3CB1DC"
     tools:context=".AddItemActivity" >
-    
 
-    <LinearLayout
-        android:id="@+id/options_linear_layout"
-        android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:orientation="vertical"
-	    android:visibility="visible" >
-	    
-        
-        <TextView
-            android:id="@+id/option_text"
-            android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
-	        android:text="Do you want to list a found item, or search for a lost item?"
-	        android:gravity="center_horizontal"
-	        android:layout_marginBottom="50dp"
-	        android:background="@drawable/roundbutton"/>
-        
-        <Button
-	        android:id="@+id/search_option_button"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
-	        android:text="Search for Lost Items"
-	        android:layout_marginBottom="10dp"
-	        android:background="@drawable/roundbutton"/>
-        
-        <Button
-	        android:id="@+id/found_option_button"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_centerHorizontal="true"
-	        android:text="List Found Items"
-	        android:background="@drawable/roundbutton"/>
-        
-        
-        
-        
-    </LinearLayout>
-    
-    
-	<LinearLayout
-	    android:id="@+id/found_item_form"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:orientation="vertical"
-	    android:visibility="invisible" >
-	   	
-	    <EditText
-	        android:id="@+id/item_description_field"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:hint="Item Description"
-	        android:background="@drawable/textborder"/>	
-	        
-	    <EditText
-	        android:id="@+id/item_name_field"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:hint="Item Name"
-	        android:background="@drawable/textborder"/>
-	    
-	    <Button
-	        android:id="@+id/confirm_button"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:text="Confirm"
-	        android:background="@drawable/roundbutton"/>
-	
-	</LinearLayout>
-	
-	<LinearLayout
-	    android:id="@+id/search_item_form"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:orientation="vertical"
-	    android:visibility="invisible">
-	    
-	    <Spinner
-	        android:id="@+id/item_drop_down"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:entries="@array/item_descriptions"
-	        android:prompt="@string/item_prompt"/>
-	    
-	    <Button
-	        android:id="@+id/next_button"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:text="Next"
-	        android:background="@drawable/roundbutton"/>
-	    
-	
-	</LinearLayout>
-	
-	 <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="100dp"
+    <TextView
+        android:id="@+id/textView1"
+        android:gravity="center_vertical"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Cancel"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/roundbutton"/>
-	
-	    
-	    
-	    
-	
+        android:layout_alignBottom="@+id/nameOfItem"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Name: "
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+    </TextView>
+    
+    <EditText
+        android:id="@id/nameOfItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="22dp"
+        android:layout_toRightOf="@id/textView1"
+        android:background="@drawable/textborder2"
+        android:ems="10" >
+    </EditText>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView1"
+        android:gravity="center_vertical"
+        android:text="Date:   "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+       <!--    android:layout_alignBottom="@+id/dateOfItem"-->
+    <LinearLayout
+        android:id="@+id/thingy"
+ 		android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/textView2"
+        android:layout_below="@id/nameOfItem"
+        android:layout_marginLeft="22dp"
+        android:ems="10" >
+
+    	<DatePicker 
+    	    
+        android:id="@+id/dateOfItem"
+        android:layout_width="wrap_content" 
+    	    android:layout_height="wrap_content"
+    	    />"
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/thingy" 
+        android:prompt="@string/Category"
+        android:entries="@array/categories"/>
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spinner1" 
+        android:prompt="@string/Status"
+        android:entries="@array/statuses"/>
+    <Button 
+        android:id="@+id/submitItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:text="Submit"
+       	android:layout_below="@id/spinner2"
+       	android:background="@drawable/roundbutton"
+       	android:textColor="@color/white"
+       />
+    <Button 
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:text="Cancel"
+       	android:layout_below="@id/submitItem"
+       	android:background="@drawable/roundbutton"
+       	android:textColor="@color/white"
+       	
+       />
+            
 </RelativeLayout>
 

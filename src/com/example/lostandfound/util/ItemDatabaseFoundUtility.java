@@ -12,18 +12,19 @@ import com.example.lostandfound.LoginActivity;
 
 import android.os.Environment;
 
-public class ItemDatabaseUtility {
+public class ItemDatabaseFoundUtility {
 	/*
 	 * How to use:
 	 * 
 	 * ----------------------------Write to text file----------------------------------
 	 * userDataBase = new UserDatabaseUtility
-	 * String output = "something,it is something,0001,category\n"
+	 * String output = "itemName,itemDescription,itemID,itemCategory\n"
 	 * userDatabase.writeToUserDB(output, "loginInformation/testFile.txt");
 	 * 
 	 *--------------------------------Read text file--------------------------------------
 	 * String fileContents = userDatabase.readFromUserDB("loginInformation/testFile.txt");
 	 * */
+	String FILENAME = "itemsFoundData.txt";
 	/**
 	 * This function writes a text file to the SD card depending on the given path
 	 * 
@@ -32,7 +33,7 @@ public class ItemDatabaseUtility {
 	 * @return boolean True if file was written, False if not
 	 * @throws IOException 
 	 * */
-	public boolean writeToUserDB() throws IOException{
+	public boolean writeToItemDBFound() throws IOException{
 		  
 		  OutputStreamWriter out = null;
 		  String fullPath = Environment.getExternalStorageDirectory().getPath();//Create file path
@@ -40,7 +41,7 @@ public class ItemDatabaseUtility {
 		   * This directory may not currently be accessible if it has been mounted 
 		   * by the user on their computer, has been removed from the device, or 
 		   * some other problem has happened. */
-		  File file = new File(fullPath + "/" + "itemsLost.txt"); //Create a new file with that path
+		  File file = new File(fullPath + "/" + FILENAME); //Create a new file with that path
 		  
 		  if (!file.exists())
 		  {
@@ -48,9 +49,7 @@ public class ItemDatabaseUtility {
 			  return true;
 		  }
 
-		  //What is this here?
-		  //file.createNewFile();
-		  ArrayList<Item> a = LoginActivity.itemsLost;
+		  ArrayList<Item> a = LoginActivity.itemsFound;//fix this
 		  for(Item acc:a)
 		  {
 			  try
@@ -89,14 +88,14 @@ public class ItemDatabaseUtility {
  * @return String String representation of the text file
  * @throws IOException 
  * */
-	public ArrayList<Item> readFromUserDB() throws IOException
+	public ArrayList<Item> readFromItemDBFound() throws IOException
 	{ 
-		  String fullPath = Environment.getExternalStorageDirectory().getPath() + "/" + "itemsLost.txt"; //Find file within path
+		  String fullPath = Environment.getExternalStorageDirectory().getPath() + "/" + FILENAME; //Find file within path
 		  File file = new File(fullPath); 
 		  file.createNewFile();
 		  
 		  if(!file.exists()){
-			  String completePath = Environment.getExternalStorageDirectory().getPath() + "/" + "itemsLost.txt"; //Create file path
+			  String completePath = Environment.getExternalStorageDirectory().getPath() + "/" + FILENAME; //Create file path
 			  File newfile = new File(completePath);
 			  newfile.createNewFile();
 			  return new ArrayList<Item>();
@@ -113,7 +112,7 @@ public class ItemDatabaseUtility {
 		  }catch(Exception e){
 		   e.printStackTrace(); 
 		  }
-		  //return builder.toString(); //we need to parse through this and put this into a HashTable
+		  reader.close();
 		  ArrayList<Item> items = new ArrayList<Item>();
 		  String string = builder.toString();
 		  String[] s = string.split("\n");
@@ -127,9 +126,5 @@ public class ItemDatabaseUtility {
 			  items.add(item);
 		  }
 		  return items;
-		  
-		  /*String s = builder.toString();
-		  
-		  String[] token = s.split("\n");*/
 		 }
 		}

@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.lostandfound.util.Account;
 import com.example.lostandfound.util.Admin;
 import com.example.lostandfound.util.Item;
+import com.example.lostandfound.util.ItemDatabaseFoundUtility;
 import com.example.lostandfound.util.ItemDatabaseUtility;
 import com.example.lostandfound.util.UserDatabaseUtility;
 
@@ -64,7 +65,9 @@ public class LoginActivity extends Activity {
 	private Activity thisActivity;
 
 	public static ArrayList<Account> accounts;
-	public static ArrayList<Item> items;
+	public static ArrayList<Item> itemsFound;
+	public static ArrayList<Item> itemsLost;
+	
 	public static Account curAcc;
 	
 	
@@ -91,7 +94,7 @@ public class LoginActivity extends Activity {
 		toast = Toast.makeText(this, Arrays.toString(DUMMY_CREDENTIALS), Toast.LENGTH_LONG);
 		toast.show();*/
 		if(MainActivity.firstTime){
-		/*	UserDatabaseUtility udu= new UserDatabaseUtility();
+			/*UserDatabaseUtility udu= new UserDatabaseUtility();
 			try {
 				accounts = udu.readFromUserDB();
 			} catch (IOException e) {
@@ -100,7 +103,14 @@ public class LoginActivity extends Activity {
 			}
 			ItemDatabaseUtility idu= new ItemDatabaseUtility();
 			try {
-				items = idu.readFromUserDB();
+				itemsLost = idu.readFromUserDB();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ItemDatabaseFoundUtility idu2= new ItemDatabaseFoundUtility();
+			try {
+				itemsFound = idu2.readFromItemDBFound();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -111,7 +121,8 @@ public class LoginActivity extends Activity {
 			defaultAdmin.setUsername("admin@admin.com");
 			defaultAdmin.setPassword("admin");
 			accounts.add(defaultAdmin);
-			items = new ArrayList<Item>();
+			itemsFound = new ArrayList<Item>();
+			itemsLost = new ArrayList<Item>();
 			
 		}
 		

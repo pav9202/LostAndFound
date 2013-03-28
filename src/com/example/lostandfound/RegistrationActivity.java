@@ -35,7 +35,7 @@ public class RegistrationActivity extends Activity {
 		OnClickListener list = new OnClickListener(){
 			public void onClick(View v){
 				// TODO saving to the database here
-				Intent in = new Intent(thisActivity,AddItemActivity.class);
+				Intent in = new Intent(thisActivity,HomeActivity.class);
 				User newUser = new User();
 				String[] s = message.split(":");
 				newUser.setUsername(s[0]);
