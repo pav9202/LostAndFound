@@ -1,0 +1,202 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchItemActivity" >
+    
+
+	        <LinearLayout 
+		        android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical"
+			    android:background="#3CB1DC"
+			    android:id="@+id/main_linear_layout" >
+			        
+			        
+			        <EditText
+			            android:id="@+id/name"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:hint="@string/insert_name"
+			            android:maxLines="1"
+			            android:singleLine="true" 
+			            android:textColor="@color/black"
+			            android:textColorHint="@color/black"
+			            android:background="@drawable/scrollborder"
+			            />
+			          
+			        
+			         <EditText
+			            android:id="@+id/description"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:hint="@string/insert_description"
+			            android:maxLines="1"
+			            android:singleLine="true" 
+			            android:textColor="@color/black"
+			            android:textColorHint="@color/black"
+			            android:background="@drawable/scrollborder"
+			            /> 
+			            
+			            
+			        <LinearLayout
+			            android:id="@+id/horizontal_linear_layout1"
+			            android:layout_width="match_parent"
+			            android:layout_height="wrap_content"
+			            android:background="#3CB1DC"
+			            android:orientation="horizontal" >
+				        
+			            
+			            <Spinner
+				            android:id="@+id/status_spinner"
+				            android:layout_width="fill_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:prompt="@string/Status"
+				            android:background="@drawable/scrollborder"
+				            android:entries="@array/statuses" />
+			          
+			            <Spinner
+				            android:id="@+id/category_spinner"
+				            android:layout_width="fill_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:prompt="@string/Category"
+				            android:background="@drawable/scrollborder"
+				            android:entries="@array/categories" />
+			            
+			            <Spinner
+				            android:id="@+id/location_spinner"
+				            android:layout_width="fill_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:prompt="@string/Location"
+				            android:background="@drawable/scrollborder"
+				            android:entries="@array/categories" />
+
+			             
+			        </LinearLayout>
+			        
+			        
+			        
+			        <LinearLayout
+			            android:id="@+id/horizontal_linear_layout2" 
+				        android:layout_width="match_parent"
+					    android:layout_height="wrap_content"
+					    android:orientation="horizontal"
+					    android:background="#3CB1DC"
+				        >
+			             
+			            <Spinner
+					        android:id="@+id/month_spinner"
+					        android:layout_width="fill_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+					        android:prompt="@string/Month"
+					        android:background="@drawable/scrollborder"
+					        android:entries="@array/months"/>
+			            
+			             <Spinner
+					        android:id="@+id/day_spinner"
+					        android:layout_width="fill_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:prompt="@string/Day"
+				            android:background="@drawable/scrollborder"
+					        android:entries="@array/day"/>
+			             
+			             <Spinner
+					        android:id="@+id/year_spinner"
+					        android:layout_width="fill_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_weight="1"
+				            android:prompt="@string/Year"
+				            android:background="@drawable/scrollborder"
+					        android:entries="@array/year"/>			            
+
+			            
+			        </LinearLayout>
+			        
+			        <LinearLayout
+			            android:id="@+id/horizontal_linear_layout3" 
+				        android:layout_width="match_parent"
+					    android:layout_height="wrap_content"
+					    android:orientation="horizontal"
+					    android:background="#3CB1DC"
+				        >
+			        
+					        <Button
+					            android:id="@+id/update_button"
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_gravity="center_horizontal"
+					            android:layout_weight="1"
+					            android:layout_marginTop="5dp"
+					            android:paddingLeft="5dp"
+					            android:paddingRight="5dp"
+					            android:text="Update" 
+					            android:textColor="@color/white"
+					            android:background="@drawable/roundbutton" />
+					        
+					        
+					        <Button
+					            android:id="@+id/return_home_button"
+					            android:layout_width="wrap_content"
+					            android:layout_height="wrap_content"
+					            android:layout_gravity="center_horizontal"
+					            android:layout_weight="1"					            
+					            android:layout_marginTop="5dp"
+					            android:paddingLeft="5dp"
+					            android:paddingRight="5dp"
+					            android:text="Return" 
+					            android:textColor="@color/white"
+					            android:background="@drawable/roundbutton" />
+			        
+			        </LinearLayout>
+			        
+			            
+
+			        
+	    </LinearLayout>
+			    
+			    
+			    
+	    <ScrollView
+	        android:id="@+id/bottom_scroll_view"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/main_linear_layout"
+	        android:visibility="visible" >
+			        
+	        
+	        
+	        <LinearLayout 
+	            android:id="@+id/scrollview_linear_layout"
+		        android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical"
+			    android:background="#3CB1DC">
+
+	            <TextView
+	                android:id="@+id/list"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                >
+	                
+	            </TextView>
+			             
+	        </LinearLayout>
+			
+	        
+	        
+	        
+        </ScrollView>
+			            
+			            
+            
+
+    
+
+        
+    
+</RelativeLayout>

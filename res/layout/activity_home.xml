@@ -1,58 +1,545 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="20"
     android:background="#3CB1DC"
-    android:id="@+id/outer_relative_layout"
-    tools:context=".MainActivity" >
-	    
-	    
-    <LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
-	    android:background="#3CB1DC"
-	    tools:context=".MainActivity" 
-	    android:id="@+id/outer_linear_layout"
-	    android:textStyle="@style/CodeFont" >
+    tools:context=".HomeActivity" >
 
-        <Button
-            android:id="@+id/adding"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="72dp"
-            android:background="@drawable/roundbutton"
-            android:gravity="center_horizontal"
-            android:text="Add Item"
-            android:textColor="@color/white" />
-        <Button
-            android:id="@+id/filter"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="72dp"
-            android:background="@drawable/roundbutton"
-            android:gravity="center_horizontal"
-            android:text="Filter"
-            android:textColor="@color/white" />
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="72dp"
-            android:background="@drawable/roundbutton"
-            android:gravity="center_horizontal"
-            android:text="Logout"
-            android:textColor="@color/white" />"
-        
-    </LinearLayout>
-	
-	<ImageView
-	    android:id="@+id/logo"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_below="@id/outer_linear_layout"
-	    android:contentDescription="@string/logo_desc"
-	    android:src="@drawable/lostafoundlogo" />
-	
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/mainscreenlogo"
+        android:layout_width="match_parent"
+        android:layout_weight="4"
+        android:layout_height="0dip"
+        android:scaleType="fitXY"
+        android:src="@drawable/laflms" />
+    
+    <TextView
+	    android:id="@+id/recentlylostitemstag"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dip"
+	    android:gravity="center"
+	    android:textSize="20sp"
+        android:layout_weight="1"
+	    android:text="Most recently lost items" 
+	    android:background="#FFCC66"
+	    android:textColor="@color/white"/>
 
+   <ScrollView
+       android:id="@+id/mainscroll1"
+       android:layout_width="match_parent"
+       android:layout_weight="6"
+       android:layout_height="0dip" >
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" >
+           
+           <ImageView
+               android:id="@+id/recentlostpicture1"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentTop="true"
+               android:scaleType="fitXY"
+               android:src="@drawable/bananaphone" />
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#3CB1DC"
+               android:layout_toRightOf="@id/recentlostpicture1"
+               android:layout_alignBottom="@id/recentlostpicture1"
+               android:layout_alignTop="@id/recentlostpicture1"
+	               >
+	               <TextView
+	               android:id="@+id/recentlostpicturename1"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturename1" />
+	           
+	               <TextView
+	               android:id="@+id/recentlostpicturestatus1"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturestatus1" />
+	           
+	               <TextView
+	               android:id="@+id/recentlostpictureID1"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpictureID1" />
+               
+           </LinearLayout>
+
+           <ImageView
+               android:id="@+id/recentlostpicture2"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_below="@id/recentlostpicture1"
+               android:scaleType="fitXY"
+               android:src="@drawable/chameleon" />
+           
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#FFFF45"
+               android:layout_toRightOf="@id/recentlostpicture2"
+               android:layout_alignBottom="@id/recentlostpicture2"
+               android:layout_alignTop="@id/recentlostpicture2"
+	               >
+	               <TextView
+	               android:id="@+id/recentlostpicturename2"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturename2" />
+	           
+	          	   <TextView
+	               android:id="@+id/recentlostpicturestatus2"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturestatus2" />
+	           
+	          	   <TextView
+	               android:id="@+id/recentlostpictureID2"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpictureID2" />
+               
+           </LinearLayout>
+
+           <ImageView
+               android:id="@+id/recentlostpicture3"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_below="@id/recentlostpicture2"
+               android:scaleType="fitXY"
+               android:src="@drawable/dispenser" />
+           
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#3CB1DC"
+               android:layout_toRightOf="@id/recentlostpicture3"
+               android:layout_alignBottom="@id/recentlostpicture3"
+               android:layout_alignTop="@id/recentlostpicture3"
+	               >
+	               <TextView
+	               android:id="@+id/recentlostpicturename3"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturename3" />
+	           
+	          	   <TextView
+	               android:id="@+id/recentlostpicturestatus3"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturestatus3" />
+	           
+	          	   <TextView
+	               android:id="@+id/recentlostpictureID3"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpictureID3" />
+               
+           </LinearLayout>
+
+           <ImageView
+               android:id="@+id/recentlostpicture4"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_below="@id/recentlostpicture3"
+               android:scaleType="fitXY"
+               android:src="@drawable/flag" />
+           
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#FFFF45"
+               android:layout_toRightOf="@id/recentlostpicture4"
+               android:layout_alignBottom="@id/recentlostpicture4"
+               android:layout_alignTop="@id/recentlostpicture4"
+	               >
+	               <TextView
+	               android:id="@+id/recentlostpicturename4"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturename4" />
+	           
+	          	   <TextView
+	               android:id="@+id/recentlostpicturestatus4"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturestatus4" />
+	           
+	          	   <TextView
+	               android:id="@+id/recentlostpictureID4"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpictureID4" />
+               
+           </LinearLayout>
+
+           <ImageView
+               android:id="@+id/recentlostpicture5"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_below="@id/recentlostpicture4"
+               android:scaleType="fitXY"
+               android:src="@drawable/gold" />
+           
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#3CB1DC"
+               android:layout_toRightOf="@id/recentlostpicture5"
+               android:layout_alignBottom="@id/recentlostpicture5"
+               android:layout_alignTop="@id/recentlostpicture5"
+	               >
+	               <TextView
+	               android:id="@+id/recentlostpicturename5"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturename5" />
+	           
+	          	   <TextView
+	               android:id="@+id/recentlostpicturestatus5"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpicturestatus5" />
+	           
+	          	   <TextView
+	               android:id="@+id/recentlostpictureID5"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentlostpictureID5" />
+               
+           </LinearLayout>
+
+       </RelativeLayout>
+   </ScrollView>
+   
+   <TextView
+	    android:id="@+id/recentlyfounditemstag"
+	    android:layout_width="fill_parent"
+	    android:layout_height="0dip"
+        android:layout_weight="1"
+        android:textSize="20sp"
+        android:gravity="center"
+	    android:text="Most recently found items" 
+	    android:background="#FFCC66"
+	    android:textColor="@color/white"/>
+   
+   <ScrollView
+       android:id="@+id/mainscroll2"
+       android:layout_width="match_parent"
+       android:layout_weight="6"
+       android:layout_height="0dip"
+       android:background="#ACB1DC" >
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" >
+
+           <ImageView
+               android:id="@+id/recentfoundpicture1"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_alignParentTop="true"
+               android:scaleType="fitXY"
+               android:src="@drawable/satellite" />
+           
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#FFFF45"
+               android:layout_toRightOf="@id/recentfoundpicture1"
+               android:layout_alignBottom="@id/recentfoundpicture1"
+               android:layout_alignTop="@id/recentfoundpicture1"
+	               >
+	               <TextView
+	               android:id="@+id/recentfoundpicturename1"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturename1" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpicturestatus1"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturestatus1" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpictureID1"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpictureID1" />
+               
+           </LinearLayout>
+
+           <ImageView
+               android:id="@+id/recentfoundpicture2"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_below="@id/recentfoundpicture1"
+               android:scaleType="fitXY"
+               android:src="@drawable/sawblade" />
+           
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#3CB1DC"
+               android:layout_toRightOf="@id/recentfoundpicture2"
+               android:layout_alignBottom="@id/recentfoundpicture2"
+               android:layout_alignTop="@id/recentfoundpicture2"
+	               >
+	               <TextView
+	               android:id="@+id/recentfoundpicturename2"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturename2" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpicturestatus2"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturestatus2" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpictureID2"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpictureID2" />
+               
+           </LinearLayout>
+
+           <ImageView
+               android:id="@+id/recentfoundpicture3"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_below="@id/recentfoundpicture2"
+               android:scaleType="fitXY"
+               android:src="@drawable/shovel" />
+           
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#FFFF45"
+               android:layout_toRightOf="@id/recentfoundpicture3"
+               android:layout_alignBottom="@id/recentfoundpicture3"
+               android:layout_alignTop="@id/recentfoundpicture3"
+	               >
+	               <TextView
+	               android:id="@+id/recentfoundpicturename3"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturename3" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpicturestatus3"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturestatus3" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpictureID3"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpictureID3" />
+               
+           </LinearLayout>
+
+           <ImageView
+               android:id="@+id/recentfoundpicture4"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_below="@id/recentfoundpicture3"
+               android:scaleType="fitXY"
+               android:src="@drawable/spear" />
+           
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#3CB1DC"
+               android:layout_toRightOf="@id/recentfoundpicture4"
+               android:layout_alignBottom="@id/recentfoundpicture4"
+               android:layout_alignTop="@id/recentfoundpicture4"
+	               >
+	               <TextView
+	               android:id="@+id/recentfoundpicturename4"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturename4" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpicturestatus4"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturestatus4" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpictureID4"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpictureID4" />
+               
+           </LinearLayout>
+
+           <ImageView
+               android:id="@+id/recentfoundpicture5"
+               android:layout_width="60dip"
+               android:layout_height="60dip"
+               android:layout_alignParentLeft="true"
+               android:layout_below="@id/recentfoundpicture4"
+               android:scaleType="fitXY"
+               android:src="@drawable/tupperware" />
+           
+           <LinearLayout 
+               android:orientation="vertical"
+               android:layout_width="fill_parent"
+               android:layout_height="fill_parent"
+               android:weightSum="9"
+               android:background="#FFFF45"
+               android:layout_toRightOf="@id/recentfoundpicture5"
+               android:layout_alignBottom="@id/recentfoundpicture5"
+               android:layout_alignTop="@id/recentfoundpicture5"
+	               >
+	               <TextView
+	               android:id="@+id/recentfoundpicturename5"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturename5" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpicturestatus5"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpicturestatus5" />
+	           
+	               <TextView
+	               android:id="@+id/recentfoundpictureID5"
+	               android:layout_width="fill_parent"
+	               android:layout_height="0dip"
+	               android:textSize="18sp"
+	               android:layout_weight="3"
+	               android:text="@string/recentfoundpictureID5" />
+               
+           </LinearLayout>
+       </RelativeLayout>
+   </ScrollView>
+   <LinearLayout 
+       android:orientation="horizontal"
+       android:layout_width="fill_parent"
+       android:layout_height="0dip"
+       android:layout_weight="2"
+       android:weightSum="3"
+       >
+
+       <Button
+           android:id="@+id/additemfrommain"
+           android:layout_width="0dip"
+           android:layout_weight="1"
+           android:layout_height="fill_parent"
+           android:text="Add item" />
+
+       <Button
+           android:id="@+id/filteritemfrommain"
+           android:layout_width="0dip"
+           android:layout_weight="1"
+           android:layout_height="fill_parent"
+           android:text="Filter items" />
+
+       <Button
+           android:id="@+id/logoutfrommain"
+           android:layout_width="0dip"
+           android:layout_weight="1"
+           android:layout_height="fill_parent"
+           android:text="Log out" />
+       
+   </LinearLayout>
+
+</LinearLayout>

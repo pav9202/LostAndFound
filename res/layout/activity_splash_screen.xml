@@ -1,0 +1,14 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3CB1DC"
+    tools:context=".SplashScreen">
+    "
+    <com.example.lostandfound.AnimatedView
+	     android:id="@+id/anim_view"
+         android:layout_height="fill_parent"
+         android:layout_width="fill_parent"/>
+    
+
+</RelativeLayout>

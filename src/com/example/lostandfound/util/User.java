@@ -4,14 +4,26 @@ import com.example.lostandfound.LoginActivity;
 
 public class User extends Account {
 	String status = "Unlocked";
-	
-	public User(){
+	/*
+	public User(Context){
 		this.ID = LoginActivity.accounts.size()+1 +"";
 		this.tries = 0;
 		this.isLocked=false;
-	}
-	public User(String id){
+	}*/
+	/*
+	public User(String username, String password, String type, String id)
+	{
+		this();
+		this.username = username;
+		this.password = password;
+		this.type = type;
 		this.ID = id;
+		
+	}*/
+	
+	
+	public User(){
+		//this.ID = id;
 		this.tries=0;
 		this.isLocked=false;
 	}
@@ -40,7 +52,7 @@ public class User extends Account {
 	@Override
 	public String getAccountType() {
 		// TODO Auto-generated method stub
-		return "User";
+		return this.type;
 	}
 
 
@@ -71,5 +83,9 @@ public class User extends Account {
 	}
 	public String toString(){
 		return this.username+":"+this.password;
+	}
+	public void setID(String i) {
+		// TODO Auto-generated method stub
+		this.ID =i;
 	}
 }

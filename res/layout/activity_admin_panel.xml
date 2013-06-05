@@ -46,14 +46,6 @@
             android:textColorHint="@color/white" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/go_home"
-        android:layout_below="@+id/admin_password_create"
-        android:src="@drawable/lostafoundlogo" />
-
     <Button
         android:id="@+id/unlock_account"
         android:layout_width="fill_parent"
@@ -84,12 +76,47 @@
         android:id="@+id/go_home"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_below="@+id/remove_item"
         android:alpha=".6"
         android:background="@drawable/roundbuttongreen"
         android:shadowColor="@color/black"
         android:text="@string/go_home"
         android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/remove_item"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/admin_password_create"
+        android:layout_marginTop="16dp"
+        android:alpha=".4"
+        android:background="@drawable/roundbutton"
+        android:shadowColor="@color/white"
+        android:text="Remove item"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/go_home"
+        android:layout_toLeftOf="@+id/button1"
+        android:src="@drawable/lostafoundlogo" />
+
+    <Button
+        android:id="@+id/Allshow"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/imageView1"
+        android:background="@drawable/roundbutton"
+        android:text="Database"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

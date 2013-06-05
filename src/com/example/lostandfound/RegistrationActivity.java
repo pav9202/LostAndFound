@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.lostandfound.util.DBHelper;
 import com.example.lostandfound.util.User;
 
 public class RegistrationActivity extends Activity {
@@ -37,11 +38,16 @@ public class RegistrationActivity extends Activity {
 				// TODO saving to the database here
 				Intent in = new Intent(thisActivity,HomeActivity.class);
 				User newUser = new User();
-				String[] s = message.split(":");
+				String[] s = message.trim().split(":");
 				newUser.setUsername(s[0]);
 				newUser.setPassword(s[1]);
 				newUser.setType("User");
-				LoginActivity.accounts.add(newUser);
+				newUser.setID(newUser.getUsername().hashCode()+"");
+				DBHelper xd = new DBHelper(thisActivity);
+				xd.open();
+				xd.insertUser(newUser);
+				xd.close();
+				//LoginActivity.database.insertUser(newUser);
 				LoginActivity.curAcc = newUser;
 				startActivity(in);
 			}

@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3CB1DC"
+    android:id="@+id/outer_relative_layout"
+    tools:context=".MainActivity" >
+	    
+    <LinearLayout
+        android:id="@+id/outer_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3CB1DC"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:textStyle="@style/CodeFont"
+        tools:context=".MainActivity" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:background="@drawable/roundbuttongreen"
+            android:gravity="center"
+            android:text="About the App"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        
+    </LinearLayout>
+
+	<Button
+	    android:id="@+id/backButton"
+	    android:layout_width="88dp"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"
+	    android:background="@drawable/roundbutton"
+	    android:text="Back"
+	    android:textColor="@color/white" />
+
+	<ImageView
+	    android:id="@+id/logo"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/backButton"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignParentRight="true"
+	    android:contentDescription="@string/logo_desc"
+	    android:src="@drawable/lostafoundlogo" />
+
+	<TextView
+	    android:id="@+id/textView3"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/textView2"
+	    android:background="@drawable/textborder"
+	    android:text="This application was developed and built by Pavleen Thukral, Varun Maudgalya, Jacob Binder, Marc Gebeily, and Mark Doss."
+	    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+	<TextView
+	    android:id="@+id/textView2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentLeft="true"
+	    android:layout_below="@+id/outer_linear_layout"
+	    android:background="@drawable/textborder"
+	    android:text="&quot;Lost And Found&quot; is an application created for the purpose of helping victims of tornadoes and storms - aiding them by connecting lost items to their respective owners. "
+	    android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+</RelativeLayout>
+

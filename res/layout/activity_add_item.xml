@@ -72,25 +72,44 @@
         android:layout_below="@+id/spinner1" 
         android:prompt="@string/Status"
         android:entries="@array/statuses"/>
-    <Button 
-        android:id="@+id/submitItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       	android:text="Submit"
-       	android:layout_below="@id/spinner2"
-       	android:background="@drawable/roundbutton"
-       	android:textColor="@color/white"
-       />
-    <Button 
+
+    <Button
         android:id="@+id/cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       	android:text="Cancel"
-       	android:layout_below="@id/submitItem"
-       	android:background="@drawable/roundbutton"
-       	android:textColor="@color/white"
-       	
-       />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/submitItem"
+        android:background="@drawable/roundbutton"
+        android:text="Cancel"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spinner2"
+        android:text="Picture" 
+        android:background="@drawable/roundbuttongreen"/>
+
+    <Button
+        android:id="@+id/submitItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/pic"
+        android:background="@drawable/roundbutton"
+        android:text="Submit"
+        android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/picView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/thingy"
+        android:layout_below="@+id/cancel"
+        android:layout_marginRight="22dp"
+        android:src="@drawable/scrollborder" />
             
 </RelativeLayout>
 

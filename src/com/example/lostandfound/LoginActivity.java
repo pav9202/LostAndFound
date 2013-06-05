@@ -1,6 +1,5 @@
 package com.example.lostandfound;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import android.animation.Animator;
@@ -15,17 +14,18 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lostandfound.util.Account;
 import com.example.lostandfound.util.Admin;
+import com.example.lostandfound.util.DBHelper;
 import com.example.lostandfound.util.Item;
-import com.example.lostandfound.util.ItemDatabaseFoundUtility;
-import com.example.lostandfound.util.ItemDatabaseUtility;
-import com.example.lostandfound.util.UserDatabaseUtility;
+import com.example.lostandfound.util.User;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -52,8 +52,8 @@ public class LoginActivity extends Activity {
 	private UserLoginTask mAuthTask = null;
 
 	// Values for email and password at the time of the login attempt.
-	private String mEmail;
-	private String mPassword;
+	private String mEmail = "";
+	private String mPassword = "";
 
 	// UI references.
 	private EditText mEmailView;
@@ -63,11 +63,6 @@ public class LoginActivity extends Activity {
 	private TextView mLoginStatusMessageView;
 	
 	private Activity thisActivity;
-
-	public static ArrayList<Account> accounts;
-	public static ArrayList<Item> itemsFound;
-	public static ArrayList<Item> itemsLost;
-	
 	public static Account curAcc;
 	
 	
@@ -77,6 +72,18 @@ public class LoginActivity extends Activity {
 		overridePendingTransition(R.anim.fadein, R.anim.fadeout);
 		//TODO change the code below to use accounts arraylist instead of Dummy_credentials
 		setContentView(R.layout.activity_login);
+		
+		//this.deleteDatabase("LostAndFoundDB");
+		
+		Button info = (Button)findViewById(R.id.infoButton);
+		info.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(thisActivity, InfoActivity.class);
+				startActivity(intent);
+			}
+		});
 		
 		//----------
 /*		Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
@@ -94,36 +101,36 @@ public class LoginActivity extends Activity {
 		toast = Toast.makeText(this, Arrays.toString(DUMMY_CREDENTIALS), Toast.LENGTH_LONG);
 		toast.show();*/
 		if(MainActivity.firstTime){
-			/*UserDatabaseUtility udu= new UserDatabaseUtility();
-			try {
-				accounts = udu.readFromUserDB();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			Admin u = new Admin();
+			u.setUsername("admin@admin.com");
+			u.setPassword("admin");
+			u.setType("Admin");
+			u.setID(u.getUsername().hashCode()+"");
+			User x = new User();
+			x.setUsername("p@p.com");
+			x.setPassword("123qwe");
+			x.setType("User");
+			x.setID(x.getUsername().hashCode()+"");
+			DBHelper e = new DBHelper(this);
+			e.open();
+			ArrayList<User> users = e.getAllUsers();
+			boolean not1 = false;
+			boolean not2 = false;
+			for(User i:users){
+				if(i.getUsername().equals(u.getUsername()))
+					not1=true;
+				if(i.getUsername().equals(x.getUsername()))
+					not2=true;
 			}
-			ItemDatabaseUtility idu= new ItemDatabaseUtility();
-			try {
-				itemsLost = idu.readFromUserDB();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			ItemDatabaseFoundUtility idu2= new ItemDatabaseFoundUtility();
-			try {
-				itemsFound = idu2.readFromItemDBFound();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
-			MainActivity.firstTime=false;
-			accounts = new ArrayList<Account>();
-			Admin defaultAdmin = new Admin();
-			defaultAdmin.setUsername("admin@admin.com");
-			defaultAdmin.setPassword("admin");
-			accounts.add(defaultAdmin);
-			itemsFound = new ArrayList<Item>();
-			itemsLost = new ArrayList<Item>();
-			
+			if(!not1)
+				e.insertUser(u);
+			if(!not2)
+				e.insertUser(x);
+			e.close();
+			//db=openOrCreateDatabase("LostAndFoundDB.db", MODE_PRIVATE, null);
+			//database = new DatabaseUtility(); 
+			 //* Don't need to create database first time, we create it at the top of this file */
+			MainActivity.firstTime=false;			
 		}
 		
 		
@@ -283,15 +290,18 @@ public class LoginActivity extends Activity {
 			} catch (InterruptedException e) {
 				return false;
 			}
-
-			for (Account credential : accounts) {
+			DBHelper boinkable = new DBHelper(LoginActivity.this);
+			boinkable.open();
+			for (Account credential : boinkable.getAllUsers()) {
 				if (credential.getUsername().equals(mEmail)) {
+					
 					// Account exists, return true if the password matches.
 					//Toast t = Toast.makeText(thisActivity, credential.getPassword()+":"+mPassword, Toast.LENGTH_LONG);
 					//t.show();
 					return credential.getPassword().equals(mPassword)&&!credential.isLocked;
-				}
+				} 
 			}
+			boinkable.close();
  
 			// TODO: register the new account here.
 			Intent intent = new Intent(thisActivity, RegistrationActivity.class);
@@ -308,11 +318,16 @@ public class LoginActivity extends Activity {
 			showProgress(false);
 
 			if (success) {
-				for (Account credential : accounts) {
+				DBHelper shmuck = new DBHelper(LoginActivity.this);
+				shmuck.open();
+				for (Account credential : shmuck.getAllUsers()) {
 					if (credential.getUsername().equals(mEmail)) {
 						curAcc = credential; 
 					}
 				}
+				shmuck.close();
+				Toast t = Toast.makeText(thisActivity, curAcc.getAccountType(), Toast.LENGTH_LONG);
+				t.show();
 				if(curAcc.getAccountType().equals("User")&&!curAcc.isLocked){
 					Intent intent = new Intent(thisActivity, HomeActivity.class);
 					//EditText editText = (EditText) findViewById(R.id.edit_message);
@@ -327,10 +342,11 @@ public class LoginActivity extends Activity {
 					startActivity(intent);
 				}
 			} else {
-				mPasswordView
-						.setError(getString(R.string.error_incorrect_password));
+				mPasswordView.setError(getString(R.string.error_incorrect_password));
 				mPasswordView.requestFocus();
-				for (Account credential : accounts) {
+				DBHelper shrilly = new DBHelper(LoginActivity.this);
+				shrilly.open();
+				for (Account credential : shrilly.getAllUsers()) {
 					if (credential.getUsername().equals(mEmail)) {
 						credential.addTry();
 						if(credential.isLocked){
@@ -339,6 +355,7 @@ public class LoginActivity extends Activity {
 						}
 					}
 				}
+				shrilly.close();
 			}
 		}
 

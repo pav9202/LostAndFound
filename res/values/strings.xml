@@ -26,8 +26,12 @@
     <string name="go_home">Go to home screen</string>
     <string name="item_prompt">Choose a category that best suits your item.</string>
     <string name="logo_desc">Logo</string>
+    <string name="insert_name_note">Note: Entering a name will return only results with an exact name match.</string>
+    <string name="insert_description_note">Note: Entering a description will return only results with an exact description match.</string>
+    <string name="table_text_size">6dp</string>
 
     <string-array name="item_descriptions">
+        <item></item>
         <item>Phone</item>
         <item>Keys</item>
         <item>Jewellery</item>
@@ -42,9 +46,15 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="Category">Category</string>
     <string name="Status">Status</string>
+    <string name="insert_name">Please insert a name</string>
+    <string name="insert_description">Please insert a description</string>
+    <string name="Month">Month</string>
+    <string name="Day">Day</string>
+    <string name="Year">Year</string>
+    <string name="Location">Location Lost</string>
 
     <string-array name="categories">
-       <item>NONE</item>
+        <item></item>
         <item>Phone</item>
         <item>Keys</item>
         <item>Jewellery</item>
@@ -52,15 +62,109 @@
         <item>Clothing</item>
         <item>Handheld Console</item>
         <item>Other</item>
-        
     </string-array>
     <string-array name="statuses">
-                <item>NONE</item>
+        <item></item>
         <item>Lost</item>
         <item>Found</item>
-        
+    </string-array>
+    <string-array name="months">
+        <item></item>
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>May</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+    <string-array name="day">
+        <item></item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="year">
+        <item></item>
+        <item>2007</item>
+        <item>2008</item>
+        <item>2009</item>
+        <item>2010</item>
+        <item>2011</item>
+        <item>2012</item>
+        <item>2013</item>
+        <item>2014</item>
+        <item>2015</item>
+        <item>2016</item>
+        <item>2017</item>
     </string-array>
 
     <string name="title_activity_filter">FilterActivity</string>
+    <string name="title_activity_search_item">SearchItemActivity</string>
+    <string name="title_activity_all__items">All_Items</string>
+    <string name="title_activity_splash_screen">Lost&amp;Found</string>
+    <string name="recentlostpicturename1">Bananaphone</string>
+    <string name="recentlostpicturestatus1">03/04/2012</string>
+    <string name="recentlostpictureID1">lovesbananas29</string>
+    <string name="recentlostpicturename2">Chameleon</string>
+    <string name="recentlostpicturestatus2">04/30/2012</string>
+    <string name="recentlostpictureID2">Pav2</string>
+    <string name="recentlostpicturename3">Soap dispenser</string>
+    <string name="recentlostpicturestatus3">12/02/2011</string>
+    <string name="recentlostpictureID3">Varun5</string>
+    <string name="recentlostpicturename4">American flag</string>
+    <string name="recentlostpicturestatus4">07/0/2010</string>
+    <string name="recentlostpictureID4">Mark67</string>
+    <string name="recentlostpicturename5">Gold bar</string>
+    <string name="recentlostpicturestatus5">01/10/2012</string>
+    <string name="recentlostpictureID5">CGI12</string>
+    <string name="recentfoundpicturename1">Satellite</string>
+    <string name="recentfoundpicturestatus1">04/06/2012</string>
+    <string name="recentfoundpictureID1">GeorgePBurdell34</string>
+    <string name="recentfoundpicturename2">Sawblade</string>
+    <string name="recentfoundpicturestatus2">02/05/2013</string>
+    <string name="recentfoundpictureID2">Binder9</string>
+    <string name="recentfoundpicturename3">Shovel</string>
+    <string name="recentfoundpicturestatus3">01/04/2011</string>
+    <string name="recentfoundpictureID3">BWaters3</string>
+    <string name="recentfoundpicturename4">Spear</string>
+    <string name="recentfoundpicturestatus4">04/02/2013</string>
+    <string name="recentfoundpictureID4">Sarah4</string>
+    <string name="recentfoundpicturename5">Tupperware</string>
+    <string name="recentfoundpicturestatus5">02/02/2012</string>
+    <string name="recentfoundpictureID5">John2</string>
+    <string name="title_activity_info">InfoActivity</string>
 
 </resources>

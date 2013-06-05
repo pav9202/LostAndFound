@@ -48,4 +48,12 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">50sp</item>
     </style>
+    
+
+    <style name="table_text_style" >
+        <item name="android:textSize">3dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    
 </resources>

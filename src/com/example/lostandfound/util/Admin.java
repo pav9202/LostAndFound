@@ -5,7 +5,6 @@ import com.example.lostandfound.LoginActivity;
 public class Admin extends User {
 	
 	public Admin(){
-		this.ID = LoginActivity.accounts.size()+1 +"";
 		this.isLocked=false;
 	}
 	public Admin(String id){
@@ -25,5 +24,4 @@ public class Admin extends User {
 		
 		this.status = "Locked";
 	}
-	
 }
